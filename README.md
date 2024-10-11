@@ -18,6 +18,7 @@ Hexo 是一个快速、简洁且高效的博客框架，具备Node.js 所带来�
 ## 安装和使用说明文档
 
 欢迎使用今安在的开源博客，查看[文档](https://github.com/ZhengqiZhuang/ZhengqiZhuang.github.io/new/main?filename=README.md)以获取更多信息。如果你在使用时遇到任何问题，你可以在故障排除中找到答案，也可以在GitHub上问我。
+下面有个快速开始的版本，可以参考。
 
 ### 快速开始
 
@@ -38,4 +39,41 @@ $ hexo generate
 $ hexo deploy
 ```
 
-## 本文档会在本周内继续完善
+### 完整部署
+
+首先，你需要下载node.js，git和npm，通过下面的命令行代码可以检查。
+```bash
+node -v
+npm -v
+git -v
+```
+如果你对npm的高级应用不太熟悉，建议使用下面的Hexo的全局部署：
+```bash
+npm install hexo-cli -g
+# 初始化Hexo博客系统
+hexo init
+hexo install
+hexo g
+hexo s
+```
+下面需要搭建GitHub存储静态页面的仓库，我们需要新建仓库“你的用户名”.github.io，注意，这个仓库需要公开，你需要完成git的配置，确保本地的Hexo博客仓库可以和远端的仓库连接。你可以通过下面的代码测试连接：、
+```bash
+ssh -T git@github.com
+```
+测试无误后，你可以发布部署
+```bash
+npm install hexo-deployer-git --save
+hexo g
+hexo d
+```
+你新建文件，安装主题可以通过下面的代码进行：
+```bash
+hexo new NAME
+git clone -b main https://github.com/anzhiyu-c/hexo-theme-anzhiyu.git themes/anzhiyu
+npm install hexo-renderer-pug hexo-renderer-stylus --save --registry=http://registry.npmmirror.com
+cp -rf ./themes/anzhiyu/_config.yml ./_config.anzhiyu.yml
+hexo cl
+hexo g
+hexo s
+```
+## 本文档会在课程结束后继续完善
