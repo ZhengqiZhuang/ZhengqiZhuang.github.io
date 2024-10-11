@@ -102,6 +102,13 @@ hexo install
 hexo g
 hexo s
 ```
+你需要修改文件_config.yaml，在最后添加下面的代码：
+```yaml
+deploy:
+  type: git
+  repository: git@github.com:Fomalhaut-Blog/Fomalhaut-Blog.github.io.git
+  branch: main
+```
 下面需要搭建GitHub存储静态页面的仓库，我们需要新建仓库“你的用户名”.github.io，注意，这个仓库需要公开，你需要完成git的配置，确保本地的Hexo博客仓库可以和远端的仓库连接。你可以通过下面的代码测试连接：、
 ```bash
 ssh -T git@github.com
